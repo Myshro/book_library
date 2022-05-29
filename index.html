@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>図書館</title>
+    <script defer src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main class="all">
+        <div class="logo-container">
+            <p class="logo-title">図書館</p>
+        </div>
+        <div class="input">
+            <ul>
+                <li class="">
+                    <label for="title">Title: </label>
+                    <input type="text" id="title">
+                </li>
+                <li>
+                    <label for="author">Author: </label>
+                    <input type="text" id="title">
+                </li>
+                <li>
+                    <label for="pages">Pages: </label>
+                    <input type="text" id="pages">
+                </li>
+                <li>
+                    <label for="read">Read: </label>
+                    <input type="button" id="read" class="read-button">
+                </li>
+                <li>
+                    <button type="button">Submit</button>
+                </li>
+            </ul>
+        </div>  
+        <table id="book-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+        </table>
+    </main>
+</body>
+</html>
