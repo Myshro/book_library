@@ -10,15 +10,11 @@ let title = selectElem('#title')
 let author = selectElem('#author')
 let pages = selectElem('#pages')
 let read = selectElem('#read')
-let deleteClickable = selectElem('.delete')
+let index;
+
+let myLibrary = [];
 
 //create book objects
-
-let aBook = new Book("fairenheit", "bradbury", 200, false)
-
-
-
-let myLibrary = [aBook];
 
 function Book(title, author, pages, read) {
     this.title = title,
@@ -40,20 +36,41 @@ button.addEventListener('click', () => {
 
     let renderBook = (book) => {
         let row = document.createElement('tr');
+        index = `row-${counter}`
         row.classList.add(`row-${counter}`)
+        myLibrary.push(row)
+
 
         for (let property in book) {
             let td = document.createElement('td');
+            if (book[property].value !== `Read` || `Unread`) {
+                td.addEventListener('click', () => {
+                    console.log('IM CLICKABLE')
+                })
+            }
             td.textContent = book[property];
             row.appendChild(td);
             bookTable.appendChild(row);
         }
 
+        //adds delete grid
+
         let td = document.createElement('td');
         td.textContent = 'delete';
-        td.classList.add('delete')
+        td.classList.add(`delete`);
         row.appendChild(td);
-        bookTable.appendChild(row);
+        td.addEventListener('click', () => {
+            function removeElem () {
+                let target = document.querySelector(`.row-${counter}`)
+                target.remove()
+                counter--;
+            }
+            
+            removeElem();
+        });
+
+        
+        
     }
 
     if (isValid()) {
@@ -61,21 +78,16 @@ button.addEventListener('click', () => {
 
         let newBook = new Book(title.value, author.value, pages.value, read.value)
 
-        myLibrary.push(newBook);
+        // myLibrary.push(newBook);
         title.value = '';
         author.value = '';
         pages.value = ''; 
         read.value = '';
         renderBook(newBook);
+        read.value = `Read`;
 
     }    
 
-})
-
-deleteClickable.addEventListener = ('click', () => {
-    let deleteRow = () => {
-
-    }
 })
 
 // function renderWholeLibrary() {
